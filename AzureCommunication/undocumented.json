@@ -1,0 +1,166 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Authentication/CommunicationAccessToken.swift",
+      "line": 32,
+      "symbol": "CommunicationAccessToken.token",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Authentication/CommunicationAccessToken.swift",
+      "line": 33,
+      "symbol": "CommunicationAccessToken.expiresOn",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Authentication/CommunicationTokenCredential.swift",
+      "line": 32,
+      "symbol": "CommunicationTokenCompletionHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Authentication/CommunicationTokenCredential.swift",
+      "line": 33,
+      "symbol": "TokenRefreshHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Authentication/CommunicationTokenRefreshOptions.swift",
+      "line": 29,
+      "symbol": "TokenRefresher",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/CommunicationCloudEnvironment.swift",
+      "line": 31,
+      "symbol": "CommunicationCloudEnvironment",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/CommunicationCloudEnvironment.swift",
+      "line": 34,
+      "symbol": "CommunicationCloudEnvironment.Public",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/CommunicationCloudEnvironment.swift",
+      "line": 35,
+      "symbol": "CommunicationCloudEnvironment.Dod",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/CommunicationCloudEnvironment.swift",
+      "line": 36,
+      "symbol": "CommunicationCloudEnvironment.Gcch",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/CommunicationCloudEnvironment.swift",
+      "line": 38,
+      "symbol": "CommunicationCloudEnvironment.init(environmentValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/CommunicationCloudEnvironment.swift",
+      "line": 42,
+      "symbol": "CommunicationCloudEnvironment.getEnvironmentValue()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/CommunicationCloudEnvironment.swift",
+      "line": 46,
+      "symbol": "CommunicationCloudEnvironment.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 38,
+      "symbol": "CommunicationUserIdentifier.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 53,
+      "symbol": "UnknownIdentifier.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 68,
+      "symbol": "PhoneNumberIdentifier.phoneNumber",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 69,
+      "symbol": "PhoneNumberIdentifier.rawId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 81,
+      "symbol": "PhoneNumberIdentifier.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 96,
+      "symbol": "MicrosoftTeamsUserIdentifier.userId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 97,
+      "symbol": "MicrosoftTeamsUserIdentifier.isAnonymous",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 98,
+      "symbol": "MicrosoftTeamsUserIdentifier.rawId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 99,
+      "symbol": "MicrosoftTeamsUserIdentifier.cloudEnviroment",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 123,
+      "symbol": "MicrosoftTeamsUserIdentifier.init(userId:isAnonymous:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travisprescott/repos/azure-sdk-for-ios/sdk/communication/AzureCommunication/Source/Identifiers.swift",
+      "line": 130,
+      "symbol": "MicrosoftTeamsUserIdentifier.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/travisprescott/repos/azure-sdk-for-ios"
+}

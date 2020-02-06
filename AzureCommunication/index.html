@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AzureCommunication  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="AzureCommunication  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          AzureCommunication 1.0.0-beta.11 Docs
+        </a>
+         (45% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/Azure/azure-sdk-for-ios">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">AzureCommunication Reference</a>
+      <img class="carat" src="img/carat.png" />
+      AzureCommunication  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/CommunicationAccessToken.html">CommunicationAccessToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/CommunicationCloudEnvironment.html">CommunicationCloudEnvironment</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/CommunicationTokenCredential.html">CommunicationTokenCredential</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/CommunicationTokenRefreshOptions.html">CommunicationTokenRefreshOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/CommunicationUserIdentifier.html">CommunicationUserIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MicrosoftTeamsUserIdentifier.html">MicrosoftTeamsUserIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/PhoneNumberIdentifier.html">PhoneNumberIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/UnknownIdentifier.html">UnknownIdentifier</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/c:@M@AzureCommunication@objc(pl)CommunicationIdentifier">CommunicationIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/CommunicationTokenCredentialProviding.html">CommunicationTokenCredentialProviding</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:18AzureCommunication0B22TokenCompletionHandlera">CommunicationTokenCompletionHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:18AzureCommunication19TokenRefreshHandlera">TokenRefreshHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:18AzureCommunication14TokenRefreshera">TokenRefresher</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='azure-communication-service-client-library-for-ios' class='heading'>Azure Communication Service client library for iOS</h1>
+
+<p>This package contains common code for Azure Communication Services libraries.</p>
+
+<p><a href="https://github.com/Azure/azure-sdk-for-ios/tree/master/sdk/communication/AzureCommunication">Source code</a>
+| <a href="https://azure.github.io/azure-sdk-for-ios/AzureCommunication/index.html">API reference documentation</a>
+| <a href="https://docs.microsoft.com/azure/communication-services/overview">Product documentation</a></p>
+<h2 id='getting-started' class='heading'>Getting started</h2>
+<h3 id='prerequisites' class='heading'>Prerequisites</h3>
+
+<ul>
+<li>The client library is written in modern Swift 5. Due to this, Xcode 10.2 or higher is required to use this library.</li>
+<li>You must have an <a href="https://azure.microsoft.com/free/">Azure subscription</a> and a
+<a href="https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource">Communication Services resource</a> to use this library.</li>
+</ul>
+<h3 id='install-the-library' class='heading'>Install the library</h3>
+
+<p>To install the Azure client libraries for iOS, we recommend you use
+<a href="#add-a-package-dependency-with-swift-package-manager">Swift Package Manager</a>.
+As an alternative, you may also integrate the libraries using
+<a href="#integrate-the-client-libraries-with-cocoapods">CocoaPods</a>.</p>
+<h4 id='add-a-package-dependency-with-swift-package-manager' class='heading'>Add a package dependency with Swift Package Manager</h4>
+
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for managing the distribution of Swift code.
+It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.</p>
+
+<p>Xcode comes with built-in support for Swift Package Manager and source control accounts and makes it easy to leverage
+available Swift packages. Use Xcode to manage the versions of package dependencies and make sure your project has the
+most up-to-date code changes.</p>
+<h5 id='xcode' class='heading'>Xcode</h5>
+
+<p>To add the library to your application, follow the instructions in
+<a href="https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app">Adding Package Dependencies to Your App</a>:</p>
+
+<p>With your project open in Xcode 11 or later, select <strong>File &gt; Swift Packages &gt; Add Package Dependency&hellip;</strong> Enter the
+clone URL of this repository: <em><a href="https://github.com/Azure/azure-sdk-for-ios.git">https://github.com/Azure/azure-sdk-for-ios.git</a></em> and click <strong>Next</strong>. For the version rule,
+specify the exact version or version range you wish to use with your application and click <strong>Next</strong>. Finally, place a
+checkmark next to the library, ensure your application target is selected in the <strong>Add to target</strong> dropdown, and click
+<strong>Finish</strong>.</p>
+<h5 id='swift-cli' class='heading'>Swift CLI</h5>
+
+<p>To add the library to your application, follow the example in
+<a href="https://swift.org/package-manager/#importing-dependencies">Importing Dependencies</a>:</p>
+
+<p>Open your project&rsquo;s <code>Package.swift</code> file and add a new package dependency to your project&rsquo;s <code>dependencies</code> section,
+specifying the clone URL of this repository and the version specifier you wish to use:</p>
+<pre class="highlight swift"><code>    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">...</span>
+        <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Azure/azure-sdk-for-ios.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0-beta.11"</span><span class="p">)</span>
+    <span class="p">],</span>
+</code></pre>
+
+<p>Next, for each target that needs to use the library, add it to the target&rsquo;s array of <code>dependencies</code>:</p>
+<pre class="highlight swift"><code>    <span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">...</span>
+        <span class="o">.</span><span class="nf">target</span><span class="p">(</span>
+            <span class="nv">name</span><span class="p">:</span> <span class="s">"MyTarget"</span><span class="p">,</span>
+            <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"AzureCommunication"</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+<h4 id='integrate-the-client-libraries-with-cocoapods' class='heading'>Integrate the client libraries with CocoaPods</h4>
+
+<p><a href="https://cocoapods.org">CocoaPods</a> is a dependency manager for Objective C and Swift projects. You can install it with
+the following command:</p>
+<pre class="highlight shell"><code><span class="nv">$ </span><span class="o">[</span><span class="nb">sudo</span><span class="o">]</span> gem <span class="nb">install </span>cocoapods
+</code></pre>
+
+<blockquote>
+<p>CocoaPods 1.5+ is required.</p>
+</blockquote>
+
+<p>To integrate one or more client libraries into your project using CocoaPods, specify them in your
+<a href="https://guides.cocoapods.org/using/the-podfile.html">Podfile</a>, providing the version specifier you wish to use. To
+ensure compatibility when using multiple client libraries in the same project, use the same version specifier for all
+Azure SDK client libraries within the project:</p>
+<pre class="highlight ruby"><code><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'12.0'</span>
+
+<span class="c1"># Comment the next line if you don't want to use dynamic frameworks</span>
+<span class="n">use_frameworks!</span>
+
+<span class="n">target</span> <span class="s1">'MyTarget'</span> <span class="k">do</span>
+  <span class="n">pod</span> <span class="s1">'AzureCommunication'</span><span class="p">,</span> <span class="s1">'1.0.0-beta.11'</span>
+  <span class="o">...</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Then, run the following command:</p>
+<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nb">install</span>
+</code></pre>
+<h2 id='key-concepts' class='heading'>Key concepts</h2>
+<h3 id='communicationtokencredential' class='heading'>CommunicationTokenCredential</h3>
+
+<p>A <code><a href="Classes/CommunicationTokenCredential.html">CommunicationTokenCredential</a></code> authenticates a user with Communication Services, such as Chat or Calling. It optionally
+provides an auto-refresh mechanism to ensure a continuously stable authentication state during communications. User
+tokens are created by the application developer using the Communication Administration SDK - once created, they are
+provided to the various Communication Services client libraries by way of a <code><a href="Classes/CommunicationTokenCredential.html">CommunicationTokenCredential</a></code> object.</p>
+<h2 id='examples' class='heading'>Examples</h2>
+
+<p>The following sections provide several code snippets showing different ways to use a <code><a href="Classes/CommunicationTokenCredential.html">CommunicationTokenCredential</a></code>:</p>
+
+<ul>
+<li><a href="#creating-a-credential-with-a-static-token">Creating a credential with a static token</a></li>
+<li><a href="#creating-a-credential-that-refreshes-asynchronously">Creating a credential that refreshes asynchronously</a></li>
+</ul>
+<h3 id='creating-a-credential-with-a-static-token' class='heading'>Creating a credential with a static token</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">AzureCommunication</span>
+
+<span class="k">let</span> <span class="nv">sampleToken</span> <span class="o">=</span> <span class="s">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjMyNTAzNjgwMDAwfQ.9i7FNNHHJT8cOzo-yrAUJyBSfJ-tPPk2emcHavOEpWc"</span>
+<span class="k">let</span> <span class="nv">credential</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">CommunicationTokenCredential</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="n">sampleToken</span><span class="p">)</span>
+</code></pre>
+<h3 id='creating-a-credential-that-refreshes-asynchronously' class='heading'>Creating a credential that refreshes asynchronously</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">AzureCommunication</span>
+
+<span class="k">let</span> <span class="nv">sampleToken</span> <span class="o">=</span> <span class="s">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjMyNTAzNjgwMDAwfQ.9i7FNNHHJT8cOzo-yrAUJyBSfJ-tPPk2emcHavOEpWc"</span>
+<span class="k">let</span> <span class="nv">sampleExpiredToken</span> <span class="o">=</span> <span class="s">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEwMH0.1h_scYkNp-G98-O4cW6KvfJZwiz54uJMyeDACE4nypg"</span>
+<span class="k">var</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">CommunicationTokenCredential</span><span class="p">?</span>
+
+<span class="kd">private</span> <span class="kd">func</span> <span class="nf">fetchTokenSync</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">TokenRefreshHandler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">newToken</span> <span class="o">=</span> <span class="n">sampleToken</span>
+    <span class="nf">completionHandler</span><span class="p">(</span><span class="n">newToken</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">options</span> <span class="o">=</span> <span class="kt">CommunicationTokenRefreshOptions</span><span class="p">(</span><span class="nv">initialToken</span><span class="p">:</span> <span class="n">sampleExpiredToken</span><span class="p">,</span> 
+                                                <span class="nv">refreshProactively</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                                                <span class="nv">tokenRefresher</span><span class="p">:</span> <span class="n">fetchTokenSync</span><span class="p">)</span>
+<span class="n">credential</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">CommunicationTokenCredential</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span>
+
+
+<span class="n">credential</span><span class="o">.</span><span class="n">token</span> <span class="p">{</span> <span class="p">(</span><span class="nv">accessToken</span><span class="p">:</span> <span class="kt">AccessToken</span><span class="p">?,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="k">in</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+
+</code></pre>
+<h2 id='troubleshooting' class='heading'>Troubleshooting</h2>
+
+<p>If you run into issues while using this library, please feel free to
+<a href="https://github.com/Azure/azure-sdk-for-ios/issues/new">file an issue</a>.</p>
+<h2 id='next-steps' class='heading'>Next steps</h2>
+
+<ul>
+<li>Read more about Communication <a href="https://docs.microsoft.com/azure/communication-services/concepts/authentication">user access tokens</a>.</li>
+</ul>
+<h2 id='contributing' class='heading'>Contributing</h2>
+
+<p>This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License
+Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For
+details, visit <a href="https://cla.microsoft.com">https://cla.microsoft.com</a>.</p>
+
+<p>When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate
+the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to
+do this once across all repositories using our CLA.</p>
+
+<p>This project has adopted the <a href="https://opensource.microsoft.com/codeofconduct/">Microsoft Open Source Code of Conduct</a>.
+For more information see the <a href="https://opensource.microsoft.com/codeofconduct/faq/">Code of Conduct FAQ</a> or contact
+<a href="mailto:opencode@microsoft.com">opencode@microsoft.com</a> with any additional questions or comments.</p>
+
+<p><img src="https://azure-sdk-impressions.azurewebsites.net/api/impressions/azure-sdk-for-ios%2Fsdk%communication%2FAzureCommunication%2FREADME.png" alt="Impressions"></p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2021 <a class="link" href="https://azure.github.io/azure-sdk/" target="_blank" rel="external">Microsoft</a>. All rights reserved. (Last updated: 2021-04-07)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
