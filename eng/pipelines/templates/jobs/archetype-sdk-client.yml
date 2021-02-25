@@ -98,8 +98,204 @@ jobs:
   #     - script: swift build
   #       displayName: 'Build libraries with swift build'
 
-  - job: 'Analyze'
-    condition: and(succeeded(), ne(variables['Skip.Analyze'], 'true'))
+  # - job: 'Analyze'
+  #   condition: and(succeeded(), ne(variables['Skip.Analyze'], 'true'))
+
+  #   variables:
+  #     - template: ../variables/globals.yml
+
+  #   pool:
+  #     vmImage: '$(OSVmImage)'
+
+  #   steps:
+
+  #     - task: UsePythonVersion@0
+  #       displayName: 'Use Python 3.6'
+  #       inputs:
+  #         versionSpec: '3.6'
+
+  #     - script: sudo xcode-select --switch /Applications/Xcode_$(XcodeVersion).app
+  #       displayName: 'Use Xcode $(XcodeVersion)'
+
+  #     - template: ../../../common/pipelines/templates/steps/verify-links.yml
+  #       parameters:
+  #         Directory: ""
+  #         CheckLinkGuidance: $true
+
+  #     - script: |
+  #         pod lib lint --quick
+  #         pod spec lint --use-modular-headers
+  #       displayName: Lint Podspecs
+
+  #     - template: /eng/pipelines/templates/steps/verify-versions.yml
+
+  #     - script: |
+  #         brew install swiftlint
+  #         case "${{parameters.BuildScheme}}" in
+  #           all)
+  #             swiftlint lint --path . --quiet --reporter emoji
+  #             ;;
+  #           sdk|examples)
+  #             swiftlint lint --path ${{parameters.BuildScheme}} --quiet --reporter emoji
+  #             ;;
+  #           *)
+  #             swiftlint lint --path sdk/${{parameters.BuildScheme}} --quiet --reporter emoji
+  #             ;;
+  #         esac
+  #       displayName: 'Swiftlint sources'
+
+  #     - script: |
+  #         pip install setuptools wheel
+  #         pip install doc-warden==$(DocWardenVersion)
+  #         ward scan -d $(Build.SourcesDirectory) -c $(Build.SourcesDirectory)/eng/.docsettings.yml
+  #       displayName: 'Verify READMEs'
+
+  #     - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+  #       # ComponentGovernance is currently unable to run on pull requests of public projects. Running on non-PR
+  #       # builds should be sufficient.
+  #       condition: and(succeededOrFailed(), ne(variables['Build.Reason'], 'PullRequest'))
+  #       displayName: 'Component detection'
+
+  # - job: 'UnitTest'
+
+  #   variables:
+  #     - template: ../variables/globals.yml
+
+  #   pool:
+  #     vmImage: '$(OSVmImage)'
+
+  #   steps:
+  #     - script: sudo xcode-select --switch /Applications/Xcode_$(XcodeVersion).app
+  #       displayName: 'Use Xcode $(XcodeVersion)'
+
+  #     - script: gem install -N trainer slather -- --use-system-libraries
+  #       displayName: 'Install build tools'
+
+  #     - script: pod install
+  #       displayName: 'Install dependencies'
+
+  #     - script: |
+  #         xcrun simctl delete unavailable
+  #         set -o pipefail
+  #         xcodebuild -workspace AzureSDK.xcworkspace \
+  #                   -scheme ${{parameters.BuildScheme}} \
+  #                   -destination "platform=iOS Simulator,OS=$(SimulatorVersion),name=$(SimulatorDevice)" \
+  #                   -configuration Debug \
+  #                   -derivedDataPath $(Build.ArtifactStagingDirectory) \
+  #                   -enableCodeCoverage YES \
+  #                   test | xcpretty -c
+  #       displayName: 'Build and test libraries'
+
+  #     - script: trainer --path $(Build.ArtifactStagingDirectory) --fail_build false
+  #       env:
+  #         FASTLANE_OPT_OUT_USAGE: true
+  #       displayName: 'Convert unit test results'
+
+  #     - task: PublishTestResults@2
+  #       inputs:
+  #         searchFolder: '$(Build.ArtifactStagingDirectory)/Logs/Test'
+  #         testResultsFiles: '*.xml'
+  #         testRunTitle: 'Unit Tests - [Xcode $(XcodeVersion), iOS $(SimulatorVersion)]'
+  #       displayName: 'Publish unit test results'
+
+  #     - script: |
+  #         echo "Getting list of projects in scheme ${{parameters.BuildScheme}}"
+  #         xcodebuild -showBuildSettings \
+  #                   -workspace AzureSDK.xcworkspace \
+  #                   -scheme ${{parameters.BuildScheme}} \
+  #                   -configuration Debug \
+  #         | grep PROJECT_FILE_PATH \
+  #         | awk -F ' = ' '{print $NF}' \
+  #         | while read PROJECT_PATH; do
+  #             PROJECT_NAME=$(echo $PROJECT_PATH | awk -F/ '{print $NF}' | sed 's/.xcodeproj//')
+  #             echo "Generating reports for $PROJECT_NAME"
+  #             slather coverage -x \
+  #                             --workspace AzureSDK.xcworkspace \
+  #                             --scheme ${{parameters.BuildScheme}} \
+  #                             --configuration Debug \
+  #                             --binary-basename $PROJECT_NAME \
+  #                             --build-directory $(Build.ArtifactStagingDirectory) \
+  #                             --output-directory $(Build.ArtifactStagingDirectory)/reports/$PROJECT_NAME \
+  #                             $PROJECT_PATH
+  #           done
+  #       displayName: 'Generate code coverage reports'
+
+  #     - task: PublishCodeCoverageResults@1
+  #       inputs:
+  #         codeCoverageTool: 'Cobertura'
+  #         summaryFileLocation: '$(Build.ArtifactStagingDirectory)/reports/*/*.xml'
+  #       displayName: 'Publish code coverage'
+
+  # - job: 'IntegrationTest'
+  #   variables:
+  #     - template: ../variables/globals.yml
+
+  #   pool:
+  #     vmImage: '$(OSVmImage)'
+
+  #   steps:
+  #     - script: sudo xcode-select --switch /Applications/Xcode_$(XcodeVersion).app
+  #       displayName: 'Use Xcode $(XcodeVersion)'
+
+  #     - script: pod install
+  #       displayName: 'Install dependencies'
+
+  #     - script: |
+  #         set -o pipefail
+  #         xcodebuild build \
+  #                   -workspace AzureSDK.xcworkspace \
+  #                   -scheme examples \
+  #                   -sdk iphonesimulator \
+  #                   -configuration Debug | xcpretty -c
+  #       displayName: 'Build examples [iphonesimulator]'
+
+  # - job: 'SmokeTest'
+  #   strategy:
+  #     matrix:
+  #       # Build SDK libraries as frameworks, dynamically link to copies stored within the app bundle
+  #       frameworks:
+  #         PodsLinkage: frameworks
+
+  #       # Build SDK libraries as static libs (.a), statically link them into the app binary
+  #       # This is currently broken, probably because Calling is pre-built as a framework
+  #       # static:
+  #       #   PodsLinkage: static
+
+  #       # Build SDK libraries as frameworks, but then statically link them into the app binary
+  #       # Calling is still dynamically linked, probably because Calling is pre-built as a framework
+  #       staticframeworks:
+  #         PodsLinkage: staticframeworks
+
+  #   variables:
+  #     - template: ../variables/globals.yml
+
+  #   pool:
+  #     vmImage: '$(OSVmImage)'
+
+  #   steps:
+  #     - script: sudo xcode-select --switch /Applications/Xcode_$(XcodeVersion).app
+  #       displayName: 'Use Xcode $(XcodeVersion)'
+
+  #     - script: |
+  #         cd examples/AzureSDKSmokeTest
+  #         pod install
+  #       env:
+  #         IS_CI: True
+  #         PODSPEC_DIR: $(Build.Repository.LocalPath)
+  #         PODS_LINKAGE: $(PodsLinkage)
+  #       displayName: 'Install dependencies'
+  #     - script: |
+  #         set -o pipefail
+  #         cd examples/AzureSDKSmokeTest
+  #         xcodebuild build \
+  #                   -workspace AzureSDKSmokeTest.xcworkspace \
+  #                   -scheme AzureSDKSmokeTest \
+  #                   -sdk iphonesimulator \
+  #                   -configuration Debug | xcpretty -c
+  #       displayName: 'Build smoke test [iphonesimulator]'
+
+  # TODO: Remove after pipeline is working
+  - job: RemoveMe
 
     variables:
       - template: ../variables/globals.yml
@@ -108,155 +304,4 @@ jobs:
       vmImage: '$(OSVmImage)'
 
     steps:
-
-      - task: UsePythonVersion@0
-        displayName: 'Use Python 3.6'
-        inputs:
-          versionSpec: '3.6'
-
-      - script: sudo xcode-select --switch /Applications/Xcode_$(XcodeVersion).app
-        displayName: 'Use Xcode $(XcodeVersion)'
-
-      - template: ../../../common/pipelines/templates/steps/verify-links.yml
-        parameters:
-          Directory: ""
-          CheckLinkGuidance: $true
-
-# TODO: Temporarily disabled due to issue #815
-#      - script: |
-#          python ./eng/scripts/version.py verify
-#        displayName: Verify Versions
-
-      - script: |
-          pod lib lint --quick
-          pod spec lint --quick
-        displayName: Lint PodSpecs
-
-      - script: |
-          brew install swiftlint
-          case "${{parameters.BuildScheme}}" in
-            all)
-              swiftlint lint --path . --quiet --reporter emoji
-              ;;
-            sdk|examples)
-              swiftlint lint --path ${{parameters.BuildScheme}} --quiet --reporter emoji
-              ;;
-            *)
-              swiftlint lint --path sdk/${{parameters.BuildScheme}} --quiet --reporter emoji
-              ;;
-          esac
-        displayName: 'Swiftlint sources'
-
-      - script: |
-          pip install setuptools wheel
-          pip install doc-warden==$(DocWardenVersion)
-          ward scan -d $(Build.SourcesDirectory) -c $(Build.SourcesDirectory)/eng/.docsettings.yml
-        displayName: 'Verify READMEs'
-
-      - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-        # ComponentGovernance is currently unable to run on pull requests of public projects. Running on non-PR
-        # builds should be sufficient.
-        condition: and(succeededOrFailed(), ne(variables['Build.Reason'], 'PullRequest'))
-        displayName: 'Component detection'
-
-      - template: /eng/common/pipelines/templates/steps/eng-common-workflow-enforcer.yml
-
-  - job: 'UnitTest'
-
-    variables:
-      - template: ../variables/globals.yml
-
-    pool:
-      vmImage: '$(OSVmImage)'
-
-    steps:
-      - script: sudo xcode-select --switch /Applications/Xcode_$(XcodeVersion).app
-        displayName: 'Use Xcode $(XcodeVersion)'
-
-      - script: gem install -N trainer slather -- --use-system-libraries
-        displayName: 'Install build tools'
-
-      - script: pod install
-        displayName: 'Install dependencies'
-
-      - script: |
-          xcrun simctl delete unavailable
-          set -o pipefail
-          xcodebuild -workspace AzureSDK.xcworkspace \
-                    -scheme ${{parameters.BuildScheme}} \
-                    -destination "platform=iOS Simulator,OS=$(SimulatorVersion),name=$(SimulatorDevice)" \
-                    -configuration Debug \
-                    -derivedDataPath $(Build.ArtifactStagingDirectory) \
-                    -enableCodeCoverage YES \
-                    test | xcpretty -c
-        displayName: 'Build and test libraries'
-
-      - publish: $(Build.ArtifactStagingDirectory)/Logs/Test
-        displayName: 'Preserve logs on failure'
-        artifact: 'test-failure-logs'
-        condition: failed()
-      
-      - script: trainer --path $(Build.ArtifactStagingDirectory) --fail_build false
-        env:
-          FASTLANE_OPT_OUT_USAGE: true
-        displayName: 'Convert unit test results'
-
-      - task: PublishTestResults@2
-        inputs:
-          searchFolder: '$(Build.ArtifactStagingDirectory)/Logs/Test'
-          testResultsFiles: '*.xml'
-          testRunTitle: 'Unit Tests - [Xcode $(XcodeVersion), iOS $(SimulatorVersion)]'
-        displayName: 'Publish unit test results'
-
-      - script: |
-          echo "Getting list of projects in scheme ${{parameters.BuildScheme}}"
-          xcodebuild -showBuildSettings \
-                    -workspace AzureSDK.xcworkspace \
-                    -scheme ${{parameters.BuildScheme}} \
-                    -configuration Debug \
-          | grep PROJECT_FILE_PATH \
-          | awk -F ' = ' '{print $NF}' \
-          | while read PROJECT_PATH; do
-              PROJECT_NAME=$(echo $PROJECT_PATH | awk -F/ '{print $NF}' | sed 's/.xcodeproj//')
-              echo "Generating reports for $PROJECT_NAME"
-              slather coverage -x \
-                              --workspace AzureSDK.xcworkspace \
-                              --scheme ${{parameters.BuildScheme}} \
-                              --configuration Debug \
-                              --binary-basename $PROJECT_NAME \
-                              --build-directory $(Build.ArtifactStagingDirectory) \
-                              --output-directory $(Build.ArtifactStagingDirectory)/reports/$PROJECT_NAME \
-                              $PROJECT_PATH
-            done
-        displayName: 'Generate code coverage reports'
-
-      - task: PublishCodeCoverageResults@1
-        inputs:
-          codeCoverageTool: 'Cobertura'
-          summaryFileLocation: '$(Build.ArtifactStagingDirectory)/reports/*/*.xml'
-        displayName: 'Publish code coverage'
-
-  - job: 'IntegrationTest'
-
-    variables:
-      - template: ../variables/globals.yml
-
-    pool:
-      vmImage: '$(OSVmImage)'
-
-    steps:
-      - script: sudo xcode-select --switch /Applications/Xcode_$(XcodeVersion).app
-        displayName: 'Use Xcode $(XcodeVersion)'
-
-      - script: pod install
-        displayName: 'Install dependencies'
-
-      - script: |
-          set -o pipefail
-          xcodebuild build \
-                    -workspace AzureSDK.xcworkspace \
-                    -scheme examples \
-                    -sdk iphonesimulator \
-                    -configuration Debug | xcpretty -c
-        displayName: 'Build examples [iphonesimulator]'
-
+      - script: "echo remove me later on!"
